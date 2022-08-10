@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{objetivo.codigo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <ion-card *ngIf="objetivo">
+    <ion-card-header>
+      <img *ngIf="objetivo.imagem" src="{{objetivo.imagem}}" />
+      <ion-icon *ngIf="!objetivo.imagem" name="videocam-off"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>{{objetivo.descricao}} <ion-icon name="star" [color]="objetivo.favorito===true ? 'warning' : ('light')"></ion-icon></h1>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

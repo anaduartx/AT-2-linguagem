@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="tertiary">
+      <ion-title>
+        ODS
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-list *ngIf="lista">
+      <ion-item-sliding *ngFor="let objetivo of lista">
+        <ion-item lines="full" (click)="exibirObjetivo(objetivo)">
+          <ion-thumbnail slot="start">
+            <img *ngIf="objetivo.imagem" src="{{objetivo.imagem}}" />
+            <ion-icon *ngIf="!objetivo.imagem" name="videocam-off"></ion-icon>
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <div>
+              <h1>{{objetivo.nome}}</h1>
+              <ion-icon name="star" [color]="objetivo.favorito===true ? 'warning' : ('light')"></ion-icon>
+            </div>
+          </ion-label>
+          <ion-chip [color]="objetivo.codigo < 5 ? 'danger' : ((objetivo.codigo < 7 ? 'warning' : 'success'))"
+          outline>
+          <ion-label>{{objetivo.codigo}}</ion-label>
+        </ion-chip>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="exibirAlertaFavorito(objetivo)">
+            <ion-icon slot="icon-only" name="star"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+  
